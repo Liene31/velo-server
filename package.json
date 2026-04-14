@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Liene31/velo-server#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1"
   }
 }
