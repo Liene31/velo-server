@@ -1,0 +1,24 @@
+{
+  "name": "velo-server",
+  "version": "1.0.0",
+  "description": "bicycle website",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node --watch --watch-preserve-output --env-file=.env server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liene31/velo-server.git"
+  },
+  "author": "LieneB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liene31/velo-server/issues"
+  },
+  "homepage": "https://github.com/Liene31/velo-server#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
