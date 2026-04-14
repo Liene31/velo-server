@@ -35,9 +35,15 @@ export const bikeService = {
 
   updateField: async (id, modification) => {
     try {
-      const modifiedField = await Bike.findByIdAndUpdate(id, modification, {
-        returnDocument: "after",
-      });
+      const modifiedField = await Bike.findByIdAndUpdate(
+        id,
+        {
+          $set: modification,
+        },
+        {
+          returnDocument: "after",
+        },
+      );
       return modifiedField;
     } catch (err) {
       console.log(err);

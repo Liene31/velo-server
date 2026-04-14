@@ -166,15 +166,15 @@ const wheelsSchema = new Schema(
 const subSpecsSchema = new Schema(
   {
     build: {
-      type: [buildSchema],
+      type: buildSchema,
       required: true,
     },
     groupSet: {
-      type: [groupSetSchema],
+      type: groupSetSchema,
       required: true,
     },
     wheels: {
-      type: [wheelsSchema],
+      type: wheelsSchema,
       required: true,
     },
   },
@@ -194,12 +194,12 @@ const bikeSchema = new Schema(
       trim: true,
     },
     overview: {
-      type: [overviewSchema],
+      type: overviewSchema,
       required: true,
     },
 
     specs: {
-      type: [subSpecsSchema],
+      type: subSpecsSchema,
       required: true,
     },
 

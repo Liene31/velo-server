@@ -1,4 +1,5 @@
 import { bikeService } from "../services/bikeService.js";
+import { flatten } from "../utils/flatten.js";
 
 export const bikeController = {
   getAll: async (req, res) => {
@@ -49,9 +50,15 @@ export const bikeController = {
   updateField: async (req, res) => {
     const id = req.params.id;
     const modification = req.body;
+    const flattenModification = flatten(modification);
+
+    console.log(flattenModification);
 
     try {
-      const updatedBike = await bikeService.updateField(id, modification);
+      const updatedBike = await bikeService.updateField(
+        id,
+        flattenModification,
+      );
 
       if (!updatedBike) {
         return res
