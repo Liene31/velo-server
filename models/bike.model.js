@@ -188,6 +188,11 @@ const bikeSchema = new Schema(
       required: true,
       trim: true,
     },
+    tags: {
+      type: [String],
+      required: true,
+      trim: true,
+    },
     name: {
       type: String,
       required: true,

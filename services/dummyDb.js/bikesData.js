@@ -2,6 +2,7 @@
   {
     id: "bike_001",
     slug: "scott-speedster-30-2025",
+    tags: ["road", "lightweight", "commuter"],
     name: "Scott Speedster 30",
     overview: {
       brand: "Scott",
@@ -67,6 +68,7 @@
   {
     id: "bike_006",
     slug: "cube-reaction-hybrid-pro-2025",
+    tags: ["ebike", "lightweight", "commuter"],
     name: "Cube Reaction Hybrid Pro",
     overview: {
       brand: "Cube",
@@ -122,6 +124,7 @@
   {
     id: "bike_011",
     slug: "cube-nuroad-pro-2025",
+    tags: ["gravel", "lightweight", "commuter"],
     name: "Cube Nuroad Pro",
     overview: {
       brand: "Cube",
@@ -177,6 +180,7 @@
   {
     id: "bike_016",
     slug: "cube-cargo-sport-dual-2025",
+    tags: ["longtail", "lightweight", "commuter"],
     name: "Cube Cargo Sport Dual",
     overview: {
       brand: "Cube",
@@ -232,6 +236,7 @@
   {
     id: "bike_021",
     slug: "uto-fold-lite-2025",
+    tags: ["folded", "lightweight", "commuter"],
     name: "UTO Fold Lite",
     overview: {
       brand: "UTO",
