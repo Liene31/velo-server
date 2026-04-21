@@ -9,3 +9,5 @@ bikeRouter.get("/:id", bikeController.getById);
 bikeRouter.post("/", bikeController.insert);
 
 bikeRouter.patch("/:id", bikeController.updateField);
+
+bikeRouter.delete("/:id", bikeController.delete);

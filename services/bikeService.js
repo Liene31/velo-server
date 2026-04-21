@@ -50,4 +50,17 @@ export const bikeService = {
       throw new Error(err);
     }
   },
+
+  delete: async (id) => {
+    try {
+      const bikeToDelete = await Bike.findByIdAndDelete(id);
+      if (bikeToDelete) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
 };

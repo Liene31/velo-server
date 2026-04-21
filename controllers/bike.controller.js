@@ -50,6 +50,7 @@ export const bikeController = {
   updateField: async (req, res) => {
     const id = req.params.id;
     const modification = req.body;
+    //transforms the data received from front in dot notation
     const flattenModification = flatten(modification);
 
     console.log(flattenModification);
@@ -67,6 +68,26 @@ export const bikeController = {
       }
 
       res.status(200).json(updatedBike);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ statusCode: 500, message: "DB error" });
+    }
+  },
+
+  delete: async (req, res) => {
+    const id = req.params.id;
+
+    try {
+      const isDeleted = await bikeService.delete(id);
+
+      if (isDeleted) {
+        res.sendStatus(204);
+      } else {
+        res.status(404).json({
+          statusCode: 404,
+          message: "Not possible to delete, the bike doesn't exist",
+        });
+      }
     } catch (err) {
       console.log(err);
       res.status(500).json({ statusCode: 500, message: "DB error" });
