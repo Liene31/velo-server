@@ -1,4 +1,5 @@
 import { User } from "../models/user.model.js";
+import argon2 from "argon2";
 
 export const authService = {
   emailExist: async (email) => {
@@ -17,7 +18,8 @@ export const authService = {
 
   create: async (user) => {
     try {
-      //hashed password to add
+      const hashedPassword = await argon2.hash(user.password);
+      user.password = hashedPassword;
       const userToCreate = User(user);
       await userToCreate.save();
       return userToCreate;
