@@ -6,3 +6,4 @@ export const router = Router();
 
 router.use("/bikes", bikeRouter);
 router.use("/auth", authRouter);
+// router.use("/booking", bookingRouter);
