@@ -7,7 +7,7 @@ export const bookingService = {
       return bookings;
     } catch (err) {
       console.log(err);
-      throw new Error(err);
+      throw err;
     }
   },
 
@@ -18,7 +18,7 @@ export const bookingService = {
       return bookingToAdd;
     } catch (err) {
       console.log(err);
-      throw new Error(err);
+      throw err;
     }
   },
 };
