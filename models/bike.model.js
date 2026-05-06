@@ -23,7 +23,6 @@ const overviewSchema = new Schema(
       type: String,
       enum: ["road", "ebike", "gravel", "longtail", "folded"],
       required: true,
-      trim: true,
     },
     price: {
       type: Number,
@@ -32,21 +31,23 @@ const overviewSchema = new Schema(
     },
     currency: {
       type: String,
-      trim: true,
       default: "EUR",
     },
 
     colors: {
       type: [String],
       trim: true,
+      required: true,
     },
     sizes: {
       type: [String],
       trim: true,
+      required: true,
     },
     description: {
       type: String,
       trim: true,
+      required: true,
     },
     inStock: {
       type: Boolean,
@@ -208,19 +209,9 @@ const bikeSchema = new Schema(
       required: true,
     },
 
-    images: [
-      {
-        url: {
-          type: String,
-        },
-        alt: {
-          type: String,
-        },
-        isPrimary: {
-          type: Boolean,
-        },
-      },
-    ],
+    bikeUrl: {
+      type: String,
+    },
   },
   {
     collection: "Bike",
