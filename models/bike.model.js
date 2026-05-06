@@ -211,6 +211,7 @@ const bikeSchema = new Schema(
 
     bikeUrl: {
       type: String,
+      required: true,
     },
   },
   {
