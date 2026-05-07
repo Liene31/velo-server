@@ -47,13 +47,30 @@ export const bikeController = {
     }
   },
 
+  update: async (req, res) => {
+    const id = req.params.id;
+    const bikeToUpdate = req.body;
+
+    try {
+      const updatedBike = await bikeService.update(id, bikeToUpdate);
+
+      if (!updatedBike) {
+        return res
+          .status(404)
+          .json({ statusCode: 404, message: "Bike not found" });
+      }
+      res.status(200).json(updatedBike);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ statusCode: 500, message: "DB error" });
+    }
+  },
+
   updateField: async (req, res) => {
     const id = req.params.id;
     const modification = req.body;
     //transforms the data received from front in dot notation
     const flattenModification = flatten(modification);
-
-    console.log(flattenModification);
 
     try {
       const updatedBike = await bikeService.updateField(

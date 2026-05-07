@@ -33,6 +33,19 @@ export const bikeService = {
     }
   },
 
+  update: async (id, modification) => {
+    try {
+      const updatedBike = await Bike.findByIdAndUpdate(id, modification, {
+        returnDocument: "after",
+      });
+
+      return updatedBike;
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  },
+
   updateField: async (id, modification) => {
     try {
       const modifiedField = await Bike.findByIdAndUpdate(
