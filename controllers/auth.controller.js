@@ -21,7 +21,25 @@ export const authController = {
     }
   },
 
-  login: (req, res) => {
-    res.sendStatus(200);
+  login: async (req, res) => {
+    try {
+      const credentials = req.body;
+
+      const userFound = await authService.findByCredentials(credentials);
+
+      if (!userFound) {
+        return res
+          .status(401)
+          .json({ statusCode: 401, message: "Wrong user details" });
+      }
+      res.status(200).json({
+        id: userFound._id,
+        firstName: userFound.firstName,
+        userEmail: userFound.email,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ statusCode: 500, message: "DB error" });
+    }
   },
 };

@@ -2,6 +2,30 @@ import { User } from "../models/user.model.js";
 import argon2 from "argon2";
 
 export const authService = {
+  findByCredentials: async (credentials) => {
+    try {
+      const userFound = await User.findOne({ email: credentials.email });
+
+      if (!userFound) {
+        return false;
+      }
+
+      const passwordCorrect = await argon2.verify(
+        userFound.password,
+        credentials.password,
+      );
+
+      if (!passwordCorrect) {
+        return false;
+      } else {
+        return userFound;
+      }
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  },
+
   emailExist: async (email) => {
     try {
       const userFound = await User.findOne({ email });
