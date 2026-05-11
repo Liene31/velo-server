@@ -36,6 +36,7 @@ export const authController = {
         id: userFound._id,
         firstName: userFound.firstName,
         userEmail: userFound.email,
+        role: userFound.role,
       });
     } catch (err) {
       console.log(err);
