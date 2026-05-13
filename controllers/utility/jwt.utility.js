@@ -48,7 +48,7 @@ export const jwtUtility = {
 
   decode: (token) => {
     return new Promise((resolve, reject) => {
-      if (token) {
+      if (!token) {
         reject(new Error("Token has not been received"));
       }
 

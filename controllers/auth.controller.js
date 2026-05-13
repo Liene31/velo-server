@@ -1,4 +1,5 @@
 import { authService } from "../services/auth.service.js";
+import { jwtUtility } from "./utility/jwt.utility.js";
 
 export const authController = {
   register: async (req, res) => {
@@ -32,11 +33,16 @@ export const authController = {
           .status(401)
           .json({ statusCode: 401, message: "Wrong user details" });
       }
+
+      //on login, takes userFound data and pass to jwt to generate a token
+      const token = await jwtUtility.generate(userFound);
+
       res.status(200).json({
         id: userFound._id,
         name: userFound.name,
         userEmail: userFound.email,
         role: userFound.role,
+        token: token,
       });
     } catch (err) {
       console.log(err);

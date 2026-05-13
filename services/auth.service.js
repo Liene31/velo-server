@@ -10,6 +10,7 @@ export const authService = {
         return false;
       }
 
+      //verifies if password matches
       const passwordCorrect = await argon2.verify(
         userFound.password,
         credentials.password,
