@@ -25,7 +25,14 @@ app.use(async (req, res, next) => {
 
 //CORS Middleware
 //Allows everything (good for development)
-app.use(cors());
+// app.use(cors());
+
+// Configuration for production
+app.use(
+  cors({
+    origin: "https://bike-to-the-future.vercel.app",
+  }),
+);
 
 // Configuration for production
 // Allows only specific origin
