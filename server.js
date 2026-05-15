@@ -30,20 +30,10 @@ app.use(async (req, res, next) => {
 // Configuration for production
 app.use(
   cors({
-    origin: "https://bike-to-the-future.vercel.app",
+    origin: ["http://localhost:5173", "https://bike-to-the-future.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   }),
 );
-
-// Configuration for production
-// Allows only specific origin
-// origin: "http://<url_vercel>:5173"--> if the project on vercel
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-//     header,
-//   }),
-// );
 
 app.use("/api", router);
 
