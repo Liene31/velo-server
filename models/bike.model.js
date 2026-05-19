@@ -192,7 +192,6 @@ const bikeSchema = new Schema(
     tags: {
       type: [String],
       required: true,
-      trim: true,
     },
     name: {
       type: String,
