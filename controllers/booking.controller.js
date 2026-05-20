@@ -15,6 +15,16 @@ export const bookingController = {
     }
   },
 
+  getById: async (req, res) => {
+    const userId = req.params.id;
+    try {
+      const bookings = await bookingService.findByUserId(userId);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ statusCode: 500, message: "DB error" });
+    }
+  },
+
   insert: async (req, res) => {
     const bookingToAdd = req.body;
 

@@ -11,6 +11,16 @@ export const bookingService = {
     }
   },
 
+  findByUserId: async (id) => {
+    try {
+      const bookings = await Booking.find({ userId: id });
+      return bookings;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  },
+
   create: async (booking) => {
     try {
       const bookingToAdd = Booking(booking);
