@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { User } from "./user.model.js";
 
 const { Schema, model, Types } = mongoose;
 
@@ -34,6 +35,11 @@ const bookingSchema = new Schema(
     },
     message: {
       type: String,
+      required: true,
+    },
+    userId: {
+      type: Types.ObjectId,
+      ref: User,
       required: true,
     },
   },
