@@ -19,9 +19,7 @@ export const bookingController = {
     const userId = req.params.id;
     try {
       const bookings = await bookingService.findByUserId(userId);
-      // if(!bookings) {
-
-      // }
+      res.status(200).json(bookings);
     } catch (err) {
       console.log(err);
       res.status(500).json({ statusCode: 500, message: "DB error" });
