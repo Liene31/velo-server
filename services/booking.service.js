@@ -13,7 +13,10 @@ export const bookingService = {
 
   findByUserId: async (id) => {
     try {
-      const bookings = await Booking.find({ userId: id });
+      //sorting in descending order -> first newest bookings and then oldest
+      const bookings = await Booking.find({ userId: id }).sort({
+        bookingDate: -1,
+      });
       return bookings;
     } catch (err) {
       console.log(err);
