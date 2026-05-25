@@ -6,7 +6,7 @@ export const bikeService = {
 
     let tagFilter;
 
-    if (tag === undefined) {
+    if (tag === undefined || tag === "all") {
       tagFilter = {};
     } else {
       //this is how tags are in my bike model
@@ -26,7 +26,6 @@ export const bikeService = {
   findById: async (id) => {
     try {
       const bike = await Bike.findById(id);
-      //   console.log(bike);
       return bike;
     } catch (err) {
       console.log(err);
