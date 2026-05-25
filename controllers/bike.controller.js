@@ -3,8 +3,10 @@ import { flatten } from "../utils/flatten.js";
 
 export const bikeController = {
   getAll: async (req, res) => {
+    const query = req.query;
+
     try {
-      const bikes = await bikeService.find();
+      const bikes = await bikeService.find(query);
       const dataToSend = {
         count: bikes.length,
         bikes: bikes,

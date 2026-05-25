@@ -1,9 +1,21 @@
 import { Bike } from "../models/bike.model.js";
 
 export const bikeService = {
-  find: async () => {
+  find: async (query) => {
+    const tag = query.tag;
+
+    let tagFilter;
+
+    if (tag === undefined) {
+      tagFilter = {};
+    } else {
+      //this is how tags are in my bike model
+      tagFilter = { tags: tag };
+    }
+
     try {
-      const bikes = await Bike.find();
+      //Mongoose checks the tags field of each bike document and returns documents where that value exists in the array.
+      const bikes = await Bike.find(tagFilter);
       return bikes;
     } catch (err) {
       console.log(err);
