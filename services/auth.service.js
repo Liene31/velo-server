@@ -27,6 +27,16 @@ export const authService = {
     }
   },
 
+  findById: async (id) => {
+    try {
+      const user = await User.findById(id);
+      return user;
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  },
+
   emailExist: async (email) => {
     try {
       const userFound = await User.findOne({ email });

@@ -49,4 +49,27 @@ export const authController = {
       res.status(500).json({ statusCode: 500, message: "DB error" });
     }
   },
+
+  //middleware does already the token check
+  //with controller/server I am just getting the user details
+  currentUser: async (req, res) => {
+    const userId = req.user.id;
+    try {
+      const userDetails = await authService.findById(userId);
+      if (!userDetails) {
+        return res
+          .status(401)
+          .json({ statusCode: 401, message: "No user found" });
+      }
+      res.status(200).json({
+        id: userDetails._id,
+        name: userDetails.name,
+        userEmail: userDetails.email,
+        role: userDetails.role,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ statusCode: 500, message: "DB error" });
+    }
+  },
 };
