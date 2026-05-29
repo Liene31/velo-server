@@ -10,6 +10,12 @@ const userSchema = new Schema(
       trim: true,
     },
 
+    surname: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
     email: {
       type: String,
       unique: true,
@@ -25,8 +31,8 @@ const userSchema = new Schema(
     role: {
       type: String,
       required: true,
-      enum: ["User", "Admin"],
-      default: "User",
+      enum: ["user", "admin"],
+      default: "user",
     },
   },
   { collection: "User", timestamps: true },
