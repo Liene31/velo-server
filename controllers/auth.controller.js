@@ -40,6 +40,7 @@ export const authController = {
       res.status(200).json({
         id: userFound._id,
         name: userFound.name,
+        surname: userFound.surname,
         userEmail: userFound.email,
         role: userFound.role,
         token: token,
