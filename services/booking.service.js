@@ -3,7 +3,9 @@ import { Booking } from "../models/booking.model.js";
 export const bookingService = {
   find: async () => {
     try {
-      const bookings = await Booking.find();
+      const bookings = await Booking.find().sort({
+        bookingDate: -1,
+      });
       return bookings;
     } catch (err) {
       console.log(err);
