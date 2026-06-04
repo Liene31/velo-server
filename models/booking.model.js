@@ -41,6 +41,14 @@ const bookingSchema = new Schema(
       type: Types.ObjectId,
       ref: User,
       required: true,
+      required: true,
+    },
+
+    status: {
+      type: String,
+      enum: ["pending", "confirmed", "completed", "cancelled"],
+      default: "pending",
+      required: true,
     },
   },
   { collection: "Booking", timestamps: true },
