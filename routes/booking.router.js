@@ -4,7 +4,9 @@ import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 export const bookingRouter = Router();
 
-bookingRouter.get("/", bookingController.getAll);
-bookingRouter.get("/:id", bookingController.getById);
+bookingRouter.get("/", authMiddleware(), bookingController.getAll);
+bookingRouter.get("/:id", authMiddleware(), bookingController.getById);
 
 bookingRouter.post("/", authMiddleware(), bookingController.insert);
+
+bookingRouter.patch("/:id", authMiddleware(), bookingController.updateStatus);

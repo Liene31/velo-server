@@ -42,4 +42,24 @@ export const bookingController = {
       res.status(500).json({ statusCode: 500, message: "DB error" });
     }
   },
+
+  updateStatus: async (req, res) => {
+    const id = req.params.id;
+    const modification = req.body;
+
+    try {
+      const updatedStatus = await bookingService.updateField(id, modification);
+
+      if (!updatedStatus) {
+        return res
+          .status(404)
+          .json({ statusCode: 404, message: "Booking not found" });
+      }
+
+      res.status(200).json(updatedStatus);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ statusCode: 500, message: "DB error" });
+    }
+  },
 };

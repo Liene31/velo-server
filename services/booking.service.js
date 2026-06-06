@@ -36,4 +36,20 @@ export const bookingService = {
       throw err;
     }
   },
+
+  updateField: async (id, modification) => {
+    try {
+      const modifiedField = await Booking.findByIdAndUpdate(id, modification, {
+        //returns updated document to the old version
+        returnDocument: "after",
+        //validates in my booking schema if I am using one of the statuses indicated in enum
+        runValidators: true,
+      });
+
+      return modifiedField;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  },
 };
