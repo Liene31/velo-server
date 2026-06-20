@@ -26,6 +26,17 @@ export const bookingService = {
     }
   },
 
+  //find and returns only selected two fields
+  findSlots: async () => {
+    try {
+      const bookings = await Booking.find().select("bookingDate bookingTime");
+      return bookings;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  },
+
   create: async (booking) => {
     try {
       const bookingToAdd = Booking(booking);

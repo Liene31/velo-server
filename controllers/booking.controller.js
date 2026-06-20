@@ -15,6 +15,20 @@ export const bookingController = {
     }
   },
 
+  getSlots: async (req, res) => {
+    try {
+      const bookings = await bookingService.findSlots();
+      const dataToSend = {
+        count: bookings.length,
+        bookings: bookings,
+      };
+      res.status(200).json(dataToSend);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ statusCode: 500, message: "DB error" });
+    }
+  },
+
   getById: async (req, res) => {
     const userId = req.params.id;
     try {
